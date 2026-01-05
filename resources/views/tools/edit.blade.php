@@ -1,10 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
-<div class="card shadow-sm">
+<div class="card shadow-sm col-md-6 mx-auto">
     <div class="card-header">
-        <h5 class="mb-0">Edit Alat</h5>
+        <h5>Edit Alat</h5>
     </div>
 
     <div class="card-body">
@@ -22,10 +21,15 @@
                 <input type="text" name="category" class="form-control" value="{{ $tool->category }}" required>
             </div>
 
-            <button class="btn btn-primary">Update</button>
-            <a href="{{ route('tools.index') }}" class="btn btn-secondary">Kembali</a>
+            <div class="d-flex justify-content-between">
+                <a href="{{ route('tools.index') }}" class="btn btn-secondary">
+                    Kembali
+                </a>
+                <button class="btn btn-primary">
+                    Update
+                </button>
+            </div>
         </form>
     </div>
 </div>
-
 @endsection
