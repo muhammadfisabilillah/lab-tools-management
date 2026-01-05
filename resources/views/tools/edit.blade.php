@@ -1,27 +1,25 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Edit Alat</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+@extends('layouts.app')
 
-<div class="container mt-4">
-    <h3>Edit Alat Laboratorium</h3>
+@section('content')
 
-    <form action="{{ route('tools.update', $tool->id) }}" method="POST">
-        @csrf
-        @method('PUT')
+<h3 class="mb-4">Edit Alat Laboratorium</h3>
 
-        <div class="mb-3">
-            <label>Nama Alat</label>
-            <input type="text" name="name" class="form-control" value="{{ $tool->name }}" required>
-        </div>
+<form action="{{ route('tools.update', $tool->id) }}" method="POST">
+    @csrf
+    @method('PUT')
 
-        <button class="btn btn-success">Update</button>
-        <a href="{{ route('tools.index') }}" class="btn btn-secondary">Kembali</a>
-    </form>
-</div>
+    <div class="mb-3">
+        <label class="form-label">Nama Alat</label>
+        <input type="text" name="name" class="form-control" value="{{ $tool->name }}" required>
+    </div>
 
-</body>
-</html>
+    <div class="mb-3">
+        <label class="form-label">Kategori</label>
+        <input type="text" name="category" class="form-control" value="{{ $tool->category }}" required>
+    </div>
+
+    <button class="btn btn-primary">Update</button>
+    <a href="{{ route('tools.index') }}" class="btn btn-secondary">Kembali</a>
+</form>
+
+@endsection

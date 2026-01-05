@@ -1,23 +1,25 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Tambah Alat</title>
-</head>
-<body>
+@extends('layouts.app')
 
-<h2>Tambah Alat</h2>
+@section('content')
+
+<h3 class="mb-4">Tambah Alat Laboratorium</h3>
 
 <form action="{{ route('tools.store') }}" method="POST">
     @csrf
 
-    <label>Nama Alat</label><br>
-    <input type="text" name="name" required><br><br>
+    <div class="mb-3">
+        <label class="form-label">Nama Alat</label>
+        <input type="text" name="name" class="form-control" required>
+    </div>
 
-    <label>Kategori</label><br>
-    <input type="text" name="category" required><br><br>
+    <div class="mb-3">
+        <label class="form-label">Kategori</label>
+        <input type="text" name="category" class="form-control" required>
+    </div>
 
-    <button type="submit">Simpan</button>
+    <button class="btn btn-success">Simpan</button>
+    <a href="{{ route('tools.index') }}" class="btn btn-secondary">Kembali</a>
+
 </form>
 
-</body>
-</html>
+@endsection

@@ -1,42 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Data Tools</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+@extends('layouts.app')
 
-<div class="container mt-4">
-    <h3>Data Alat Laboratorium</h3>
+@section('content')
 
-    <a href="{{ route('tools.create') }}" class="btn btn-primary mb-3">
-        Tambah Alat
-    </a>
+<div class="d-flex justify-content-between mb-3">
+    <h3>Daftar Alat Laboratorium</h3>
+    <a href="{{ route('tools.create') }}" class="btn btn-primary">Tambah Alat</a>
+</div>
 
-    <table class="table table-bordered">
+<table class="table table-bordered">
+    <thead class="table-dark">
         <tr>
             <th>No</th>
             <th>Nama Alat</th>
+            <th>Kategori</th>
             <th>Aksi</th>
         </tr>
-
+    </thead>
+    <tbody>
         @foreach ($tools as $tool)
         <tr>
             <td>{{ $loop->iteration }}</td>
             <td>{{ $tool->name }}</td>
+            <td>{{ $tool->category }}</td>
             <td>
                 <a href="{{ route('tools.edit', $tool->id) }}" class="btn btn-warning btn-sm">Edit</a>
 
-                <form action="{{ route('tools.destroy', $tool->id) }}" method="POST" style="display:inline">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-danger btn-sm">Hapus</button>
-                </form>
+            <form action="{{ route('tools.destroy', $tool->id) }}" method="POST" class="d-inline">
+                @csrf
+                @method('DELETE')
+                <button class="btn btn-danger btn-sm" onclick="return confirm('Yakin hapus?')">Hapus</button>
+            </form>
+
             </td>
         </tr>
         @endforeach
-    </table>
-</div>
+    </tbody>
+</table>
 
-</body>
-</html>
+@endsection
