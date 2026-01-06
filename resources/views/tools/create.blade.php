@@ -1,12 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="card shadow-sm col-md-6 mx-auto">
-    <div class="card-header">
-        <h5>Tambah Alat</h5>
-    </div>
-
+<div class="card shadow-sm">
     <div class="card-body">
+        <h4 class="mb-3">Tambah Alat</h4>
+
         <form action="{{ route('tools.store') }}" method="POST">
             @csrf
 
@@ -20,14 +18,8 @@
                 <input type="text" name="category" class="form-control" required>
             </div>
 
-            <div class="d-flex justify-content-between">
-                <a href="{{ route('tools.index') }}" class="btn btn-secondary">
-                    Kembali
-                </a>
-                <button class="btn btn-success">
-                    Simpan
-                </button>
-            </div>
+            <button class="btn btn-success">Simpan</button>
+            <a href="{{ route('tools.index') }}" class="btn btn-secondary">Kembali</a>
         </form>
     </div>
 </div>
